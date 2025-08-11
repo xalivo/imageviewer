@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>imageviewer</title>
+    <style>
+        button {
+            width: 140px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+            background-color: #dbdbff;
+            border-radius: 10px;
+            border: black solid 1px;
+        }
+
+        button:hover {
+            background-color: #bbbbda;
+        }
+
+        .btnContainer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h1>imageviewer</h1>
+    <div class="btnContainer">
+        <button onclick="goToNextView(-1)"><</button>
+        <button onclick="goToNextView(1)">></button>
+    </div>
+    <img id="view" src="move-images-here/1.jpg" alt="image LOL" width="50%" />
+    <script>
+        let counter = 1;
+        const goToNextView = (increment) => {
+            if (counter + increment > 0) {
+                counter += increment;
+                updateImageSrc();
+            }
+        }
+
+        const updateImageSrc = () => {
+            document.getElementById('view').setAttribute("src", "move-images-here/" + counter + ".jpg");
+        }
+    </script>
+</body>
+</html>
