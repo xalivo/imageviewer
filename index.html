@@ -49,6 +49,10 @@
 
 <body>
     <h1>imageviewer</h1>
+    <div>
+        <button onclick="changeFileType('.jpg')">.jpg</button>
+        <button onclick="changeFileType('.webp')">.webp</button>
+    </div>
     <div class="container">
         <img id="view" src="move-images-here/1.jpg" alt="Image could not be loaded" width="80%" />
     </div>
@@ -59,16 +63,22 @@
     </div>
     <script>
         let counter = 1;
+        let fileType = ".jpg";
         const goToNextView = (increment) => {
             if (counter + increment > 0) {
                 counter += increment;
-                document.getElementById("display").innerHTML = counter + ".jpg";
+                document.getElementById("display").innerHTML = counter + fileType;
                 updateImageSrc();
             }
         }
 
         const updateImageSrc = () => {
-            document.getElementById("view").setAttribute("src", "move-images-here/" + counter + ".jpg");
+            document.getElementById("view").setAttribute("src", "move-images-here/" + counter + fileType);
+        }
+
+        const changeFileType = (type) => {
+            fileType = type;
+            updateImageSrc();
         }
     </script>
 </body>
