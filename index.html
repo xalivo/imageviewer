@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <title>imageviewer</title>
     <style>
+        * {
+            font-family: Ubuntu, "Helvetica Neue",serif;
+        }
+
         button {
             width: 140px;
             height: 60px;
@@ -13,6 +17,7 @@
             background-color: #dbdbff;
             border-radius: 10px;
             border: black solid 1px;
+            font-size: 20px;
         }
 
         button:hover {
@@ -20,10 +25,11 @@
         }
 
         .btnContainer {
-            width: 100%;
+            position: absolute;
+            bottom: 0;
+            width: 95%;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 30px;
         }
 
         .container {
@@ -37,32 +43,32 @@
             background-color: beige;
             border: none;
             color: black;
-            font-size: 20px;
         }
     </style>
 </head>
 
 <body>
     <h1>imageviewer</h1>
+    <div class="container">
+        <img id="view" src="move-images-here/1.jpg" alt="Image could not be loaded" width="80%" />
+    </div>
     <div class="btnContainer">
         <button onclick="goToNextView(-1)"><</button>
         <button id="display" disabled>1.jpg</button>
         <button onclick="goToNextView(1)">></button>
-    </div>
-    <div class="container">
-        <img id="view" src="move-images-here/1.jpg" alt="image LOL" width="80%" />
     </div>
     <script>
         let counter = 1;
         const goToNextView = (increment) => {
             if (counter + increment > 0) {
                 counter += increment;
+                document.getElementById("display").innerHTML = counter + ".jpg";
                 updateImageSrc();
             }
         }
 
         const updateImageSrc = () => {
-            document.getElementById('view').setAttribute("src", "move-images-here/" + counter + ".jpg");
+            document.getElementById("view").setAttribute("src", "move-images-here/" + counter + ".jpg");
         }
     </script>
 </body>
